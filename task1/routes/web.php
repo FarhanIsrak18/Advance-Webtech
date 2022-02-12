@@ -17,13 +17,13 @@ use App\Http\Controllers\StudentsController;
 
 
 Route::get('/login',[pagescontroller::class,'login'])->name('login');
-Route::get('/',[pagescontroller::class,'index'])->name('home');
-Route::get('/reg',[pagescontroller::class,'register'])->name('registration');
+Route::get('/Home page',[pagescontroller::class,'home'])->name('home');
+Route::get('/contacts',[pagescontroller::class,'contacts'])->name('contacts');
+Route::get('/admin',[pagescontroller::class,'admin'])->name('admin');
+Route::get('/student',[pagescontroller::class,'student'])->name('student');
 
 
-Route::get('/student/create',[StudentsController::class,'create']);
-Route::get('/student/edit',[StudentsController::class,'edit']);
-Route::get('/student/delete',[StudentsController::class,'delete']);
+
 Route::get('/student/get',[StudentsController::class,'get']);
 
 Route::get('/product',[pagescontroller::class,'product'])->name('product');

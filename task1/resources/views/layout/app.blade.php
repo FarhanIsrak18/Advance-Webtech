@@ -1,12 +1,9 @@
 <html>
     <body>
-        <div>
-            <a href="{{route('registration')}}">register</a>
-            <a href="/student/create">create</a>
-            <a href="/student/edit">edit</a>
-            <a href="/student/delete">delete</a>
-            <a href="/student/get">get</a>
-            <a href="{{route('login')}}">login</a>
+        <div style="text-align:center">
+            <a href="{{route('contacts')}}"> Contact us </a>
+            <a href="{{route('home')}}"> Home page </a>
+            <a href="{{route('login')}}"> login </a>
         </div>
       
 

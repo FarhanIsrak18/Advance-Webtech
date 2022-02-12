@@ -6,14 +6,17 @@ use Illuminate\Http\Request;
 
 class StudentsController extends Controller
 {
+    public function home(){
+        return view('Task1.home');
+    }
     public function create(){
-        return view('student.create');
+        return view('Task1.create');
     }
     public function edit(){
-        return view('student.edit');
+        return view('Task1.edit');
     }
     public function delete(){
-        return view('student.delete');
+        return view('Task1.delete');
     }
     public function get(){
         $student = array(
@@ -23,7 +26,7 @@ class StudentsController extends Controller
         );
         $sub=12-2;
         $student = (object) $student;
-        return view('student.get')
+        return view('Task1.get')
         -> with('student',$student)
         ->with('sub',$sub);
         ;
