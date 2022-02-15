@@ -9,19 +9,19 @@
     @error('uname')
     <span>{{$message}}</span>
     @enderror
-    <br>Price:<input type='text' name='price'>
+    <br>Price:<input type='text' name='price' value='{{old("price")}}'>
     @error('price')
     {{$message}}
     @enderror
-    <br>quantity:<input type='number' name='qty'>
+    <br>quantity:<input type='number' name='qty' value='{{old("qty")}}'>
     @error('qty')
      {{$message}}
     @enderror
-    <br>Description:<textarea name='des'></textarea>
+    <br>Description:<textarea name='des' value='{{old("des")}}'></textarea>
     @error('des')
     {{$message}}
     @enderror
-    <br><input type='submit' name='submit' value='add'>
+    <br><input type='submit' name='submit' value='add'><input type='reset' value='clear'>
 </form>
 </html>
 @endsection

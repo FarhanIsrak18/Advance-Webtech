@@ -3,10 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\product;
 
 class pagescontroller extends Controller
 {
-    //
+    
     public function login(){
         return view('login');
     }
@@ -66,14 +67,19 @@ class pagescontroller extends Controller
     public function add(){
         return view('products.add');
     }
-    public function edit(){
+    public function edit(Request $req){
+        $products = product::where('id','=',$req->id)->updateOrInsert(
+            ['name'=>$req->name,'price'=>$req->price,'qty'=>$req->qty,'description'=>$req->des]
+        );
         return view('products.edit');
     }
-    public function delete(){
+    public function delete(Request $req){
+        $products = product::where('id','=',$req->id)->delete();
         return view('products.delete');
     }
     public function view(){
-        return view('products.view');
+        $products = product::all();
+        return view('products.view')->with('products',$products);
     }
    
     public function loginsubmit(Request $req){
@@ -84,12 +90,17 @@ class pagescontroller extends Controller
             'des'=>'required|string'
 
         ]);
-        $req->uname;
-        $req->price;
-        $req->qty;
-        $req->des;
 
-        return "product name is $req->uname and price is $req->price and quantity is $req->qty and $req->des";
+        $pt = new product();
+        $pt->name = $req->uname;
+        $pt->price = $req->price;
+        $pt->qty = $req->qty;
+        $pt->description = $req->des;
+        $pt->save();
+
+        $products = product::all();
+        return view('products.view')->with('products',$products);
+        // return "product name is $req->uname and price is $req->price and quantity is $req->qty and $req->des";
     }
     
 
