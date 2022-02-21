@@ -4,13 +4,26 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\product;
+use App\Models\customer;
 
 class pagescontroller extends Controller
 {
     
+    // public function login(){
+    //     return view('login');
+    // }
     public function login(){
-        return view('login');
+        return view('products.login');
     }
+
+   public function logincheck(Request $req){
+        $cust = customer::where('phone',$req->phone)->first();
+       if($cust != null){
+        return $this->view();
+       }else{ return $this->login();}
+    }
+   
+
     public function admin(){
         return view('Task1.admin');
     }
@@ -67,15 +80,27 @@ class pagescontroller extends Controller
     public function add(){
         return view('products.add');
     }
-    public function edit(Request $req){
-        $products = product::where('id','=',$req->id)->updateOrInsert(
-            ['name'=>$req->name,'price'=>$req->price,'qty'=>$req->qty,'description'=>$req->des]
-        );
+
+    public function edit(){
         return view('products.edit');
     }
-    public function delete(Request $req){
+
+    public function editsubmit(Request $req){
+        $products = product::where('id','=',$req->id)->first();
+        $products->name = $req->uname;
+        $products->price = $req->price;
+        $products->qty = $req->qty;
+        $products->description = $req->des;
+        $products->save();
+        return $this->view();
+    }
+    public function delete(){
+           
+         return view('products.delete');
+    }
+    public function deletesubmit(Request $req){
         $products = product::where('id','=',$req->id)->delete();
-        return view('products.delete');
+        return $this->view();
     }
     public function view(){
         $products = product::all();

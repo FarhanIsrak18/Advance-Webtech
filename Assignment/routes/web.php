@@ -16,7 +16,7 @@ use App\Http\Controllers\StudentsController;
 */
 
 
-Route::get('/login',[pagescontroller::class,'login'])->name('login');
+// Route::get('/login',[pagescontroller::class,'login'])->name('login');
 Route::get('/Home page',[pagescontroller::class,'home'])->name('home');
 Route::get('/contacts',[pagescontroller::class,'contacts'])->name('contacts');
 Route::get('/admin',[pagescontroller::class,'admin'])->name('admin');
@@ -31,5 +31,11 @@ Route::get('/product/add',[pagescontroller::class,'add'])->name('add');
 Route::get('/product/delete',[pagescontroller::class,'delete'])->name('delete');
 Route::get('/product/edit',[pagescontroller::class,'edit'])->name('edit');
 Route::get('/product/view',[pagescontroller::class,'view'])->name('view');
+Route::get('/login',[pagescontroller::class,'login'])->name('login');
 
-Route::post('/login',[pagescontroller::class,'loginsubmit'])->name('login.submit');
+Route::post('/loginsubmit',[pagescontroller::class,'loginsubmit'])->name('login.submit');
+Route::post('/product/delete',[pagescontroller::class,'deletesubmit'])->name('deletesubmit');
+Route::post('/product/edit',[pagescontroller::class,'editsubmit'])->name('editsubmit');
+Route::post('/customer/login',[pagescontroller::class,'logincheck'])->name('logincheck');
+
+
