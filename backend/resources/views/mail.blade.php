@@ -1,0 +1,10 @@
+<html>
+    <body>
+        <h2>
+            {{$sub}}
+        </h2>
+        <p>
+            {{$body}}
+        </p>
+    </body>
+</html> 
